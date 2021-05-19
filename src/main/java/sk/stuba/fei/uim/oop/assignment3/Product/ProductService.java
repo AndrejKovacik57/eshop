@@ -25,4 +25,16 @@ public class ProductService implements IProductService{
     public List<Product> getAll() {
         return this.repository.findAll();
     }
+
+    @Override
+    public Product create(ProductRequest request) {
+        Product newProduct = new Product();
+        newProduct.setName(request.getName());
+        newProduct.setAmount(request.getAmount());
+        newProduct.setDescription(request.getDescription());
+        newProduct.setUnit(request.getUnit());
+        newProduct.setPrice(request.getPrice());
+        return this.repository.save(newProduct);
+
+    }
 }
