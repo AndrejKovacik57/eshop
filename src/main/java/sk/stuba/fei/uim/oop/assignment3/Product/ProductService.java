@@ -2,8 +2,11 @@ package sk.stuba.fei.uim.oop.assignment3.Product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sk.stuba.fei.uim.oop.assignment3.Exceptions.NotFoundException;
 
 import java.util.List;
+import java.util.Optional;
+
 
 @Service
 public class ProductService implements IProductService{
@@ -13,21 +16,16 @@ public class ProductService implements IProductService{
     @Autowired
     public ProductService(ProductRepository repository) {
         this.repository = repository;
-        Product p1 = new Product();
-        p1.setUnit("procesor");
-        this.repository.save(p1);
-        Product p2 = new Product();
-        p2.setUnit("graficka karta");
-        this.repository.save(p2);
+
     }
 
     @Override
-    public List<Product> getAll() {
+    public List<Product> getAllProducts() {
         return this.repository.findAll();
     }
 
     @Override
-    public Product create(ProductRequest request) {
+    public Product createProduct(ProductRequest request) {
         Product newProduct = new Product();
         newProduct.setName(request.getName());
         newProduct.setAmount(request.getAmount());
@@ -37,4 +35,18 @@ public class ProductService implements IProductService{
         return this.repository.save(newProduct);
 
     }
+
+    @Override
+    public Product getProductById(Long id) {
+        Optional<Product> optionalProduct=this.repository.findById(id);
+        if(optionalProduct.isPresent()){
+            return optionalProduct.get();
+        }
+        else{
+            throw new NotFoundException();
+        }
+
+    }
+
+
 }
