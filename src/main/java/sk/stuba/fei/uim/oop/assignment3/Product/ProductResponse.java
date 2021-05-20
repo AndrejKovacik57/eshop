@@ -20,9 +20,5 @@ public class ProductResponse {
         this.unit = p.getUnit();
         this.price = p.getPrice();
     }
-    public ProductResponse(Integer amount){
 
-        this.amount = amount;
-
-    }
 }

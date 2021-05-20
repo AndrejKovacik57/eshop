@@ -78,7 +78,22 @@ public class ProductService implements IProductService{
         }
     }
 
+    @Override
+    public void updateProductAmountById(Long id, Integer amount) {
 
+        if(this.repository.findById(id).isPresent()){
+            if(amount!=null){
+                this.repository.findById(id).get().setAmount(this.repository.findById(id).get().getAmount()+amount);
+
+            }
+
+            this.repository.save(this.repository.findById(id).get());
+        }
+        else{
+            throw new NotFoundException();
+        }
+
+    }
 
 
 }

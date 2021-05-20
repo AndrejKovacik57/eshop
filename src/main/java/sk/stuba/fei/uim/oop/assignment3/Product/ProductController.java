@@ -43,4 +43,9 @@ public class ProductController {
     public Map<String, Integer> getProductAmountById(@PathVariable("id") Long id){
         return Collections.singletonMap("amount",service.getProductById(id).getAmount());
     }
+    @PostMapping(value = "/{id}/amount")
+    public Map<String, Integer> increaseProductAmountById(@PathVariable("id") Long id, @RequestBody ProductRequest request){
+        this.service.updateProductAmountById(id,request.getAmount());
+        return Collections.singletonMap("amount",service.getProductById(id).getAmount());
+    }
 }
