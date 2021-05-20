@@ -5,8 +5,6 @@ import org.springframework.stereotype.Service;
 import sk.stuba.fei.uim.oop.assignment3.Exceptions.NotFoundException;
 
 import java.util.List;
-import java.util.Optional;
-
 
 @Service
 public class ProductService implements IProductService{
