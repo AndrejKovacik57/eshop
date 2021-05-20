@@ -13,11 +13,13 @@ public class CartController {
 
 
     @PostMapping()
-
     public ResponseEntity<CartResponse>  addCart(){
 
         return new ResponseEntity<>(new CartResponse(this.service.createCart()),HttpStatus.CREATED);
     }
-
+    @GetMapping ("/{id}")
+    public CartResponse  findCartById(@PathVariable("id") Long id){
+        return new CartResponse(this.service.getCartById(id));
+    }
 
 }
