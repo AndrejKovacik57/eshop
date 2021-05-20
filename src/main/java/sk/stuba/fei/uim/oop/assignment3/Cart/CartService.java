@@ -28,4 +28,14 @@ public class CartService implements  ICartService{
         }
     }
 
+    @Override
+    public void deleteCartById(Long id) {
+        if(this.repository.findById(id).isPresent()){
+             this.repository.delete(this.repository.findById(id).get());
+        }
+        else{
+            throw new NotFoundException();
+        }
+    }
+
 }
