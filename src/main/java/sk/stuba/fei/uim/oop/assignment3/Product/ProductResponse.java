@@ -8,7 +8,7 @@ public class ProductResponse {
 
     private String name;
     private String description;
-    private Long amount;
+    private Integer amount;
     private String unit;
     private Double price;
 
@@ -19,5 +19,10 @@ public class ProductResponse {
         this.amount = p.getAmount();
         this.unit = p.getUnit();
         this.price = p.getPrice();
+    }
+    public ProductResponse(Integer amount){
+
+        this.amount = amount;
+
     }
 }

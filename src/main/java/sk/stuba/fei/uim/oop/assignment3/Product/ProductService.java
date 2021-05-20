@@ -38,15 +38,47 @@ public class ProductService implements IProductService{
 
     @Override
     public Product getProductById(Long id) {
-        Optional<Product> optionalProduct=this.repository.findById(id);
-        if(optionalProduct.isPresent()){
-            return optionalProduct.get();
+        if(this.repository.findById(id).isPresent()){
+            return this.repository.findById(id).get();
         }
         else{
             throw new NotFoundException();
         }
 
     }
+
+    @Override
+    public void updateProductById(Long id, String name, String description) {
+
+        if(this.repository.findById(id).isPresent()){
+            if(name!=null){
+                this.repository.findById(id).get().setDescription(description);
+
+            }
+            if(description!=null){
+                this.repository.findById(id).get().setName(name);
+
+
+            }
+            this.repository.save(this.repository.findById(id).get());
+        }
+        else{
+            throw new NotFoundException();
+        }
+
+    }
+
+    @Override
+    public void deleteProductById(Long id) {
+        if(this.repository.findById(id).isPresent()){
+            this.repository.delete(this.repository.findById(id).get());
+        }
+        else{
+            throw new NotFoundException();
+        }
+    }
+
+
 
 
 }
