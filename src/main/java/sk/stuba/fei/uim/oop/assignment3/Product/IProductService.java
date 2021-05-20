@@ -8,9 +8,9 @@ public interface IProductService {
     List<Product> getAllProducts();
     Product createProduct(ProductRequest request);
     Product getProductById(Long id);
-    void updateProductById(Long id, String name, String description);
+    Product updateProductById(Long id, String name, String description);
     void deleteProductById(Long id);
-    void updateProductAmountById(Long id, Integer amount);
+    void increaseProductAmountById(Long id, Integer amount);
 
 
 

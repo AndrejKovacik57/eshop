@@ -46,19 +46,19 @@ public class ProductService implements IProductService{
     }
 
     @Override
-    public void updateProductById(Long id, String name, String description) {
+    public Product updateProductById(Long id, String name, String description) {
 
         if(this.repository.findById(id).isPresent()){
             if(name!=null){
-                this.repository.findById(id).get().setDescription(description);
-
-            }
-            if(description!=null){
                 this.repository.findById(id).get().setName(name);
 
 
             }
-            this.repository.save(this.repository.findById(id).get());
+            if(description!=null){
+                this.repository.findById(id).get().setDescription(description);
+
+            }
+            return this.repository.save(this.repository.findById(id).get());
         }
         else{
             throw new NotFoundException();
@@ -77,13 +77,11 @@ public class ProductService implements IProductService{
     }
 
     @Override
-    public void updateProductAmountById(Long id, Integer amount) {
+    public void increaseProductAmountById(Long id, Integer amount) {
 
         if(this.repository.findById(id).isPresent()){
-            if(amount!=null){
-                this.repository.findById(id).get().setAmount(this.repository.findById(id).get().getAmount()+amount);
 
-            }
+            this.repository.findById(id).get().setAmount(this.repository.findById(id).get().getAmount()+amount);
 
             this.repository.save(this.repository.findById(id).get());
         }

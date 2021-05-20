@@ -18,4 +18,5 @@ public class ProductInCart {
     private Long id;
 
     private Integer amount;
+
 }

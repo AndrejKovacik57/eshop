@@ -33,8 +33,8 @@ public class ProductController {
         return  new ProductResponse(this.service.getProductById(id));
     }
     @PutMapping("/{id}")
-    public void updateProductById(@PathVariable("id") Long id, @RequestBody ProductRequest request){
-        this.service.updateProductById(id,request.getName(),request.getDescription());
+    public ProductResponse updateProductById(@PathVariable("id") Long id, @RequestBody ProductRequest request){
+        return new ProductResponse(this.service.updateProductById(id,request.getName(),request.getDescription())) ;
 
     }
     @DeleteMapping("/{id}")
@@ -47,7 +47,7 @@ public class ProductController {
     }
     @PostMapping(value = "/{id}/amount")
     public Map<String, Integer> increaseProductAmountById(@PathVariable("id") Long id, @RequestBody ProductRequest request){
-        this.service.updateProductAmountById(id,request.getAmount());
+        this.service.increaseProductAmountById(id,request.getAmount());
         return Collections.singletonMap("amount",service.getProductById(id).getAmount());
     }
 }
