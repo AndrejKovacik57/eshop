@@ -12,7 +12,7 @@ public interface IProductService {
     Product getProductById(Long id);
     Product updateProductById(Long id, String name, String description);
     void deleteProductById(Long id);
-    void changeProductAmountById(Long id, Integer amount);
+    Integer changeProductAmountById(Long id, Integer amount);
 
 
 

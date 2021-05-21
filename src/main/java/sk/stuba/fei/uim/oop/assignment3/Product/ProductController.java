@@ -41,13 +41,14 @@ public class ProductController {
     public void deleteProductById(@PathVariable("id") Long id){
         this.service.deleteProductById(id);
     }
+
     @GetMapping(value = "/{id}/amount")
     public Map<String, Integer> getProductAmountById(@PathVariable("id") Long id){
         return Collections.singletonMap("amount",service.getProductById(id).getAmount());
     }
     @PostMapping(value = "/{id}/amount")
-    public Map<String, Integer> increaseProductAmountById(@PathVariable("id") Long id, @RequestBody ProductRequest request){
-        this.service.changeProductAmountById(id,request.getAmount());
-        return Collections.singletonMap("amount",service.getProductById(id).getAmount());
+    public Map<String, Integer> changeProductAmountById(@PathVariable("id") Long id, @RequestBody ProductRequest request){
+
+        return Collections.singletonMap("amount",this.service.changeProductAmountById(id,request.getAmount()));
     }
 }
