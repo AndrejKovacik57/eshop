@@ -47,7 +47,7 @@ public class ProductController {
     }
     @PostMapping(value = "/{id}/amount")
     public Map<String, Integer> increaseProductAmountById(@PathVariable("id") Long id, @RequestBody ProductRequest request){
-        this.service.increaseProductAmountById(id,request.getAmount());
+        this.service.changeProductAmountById(id,request.getAmount());
         return Collections.singletonMap("amount",service.getProductById(id).getAmount());
     }
 }

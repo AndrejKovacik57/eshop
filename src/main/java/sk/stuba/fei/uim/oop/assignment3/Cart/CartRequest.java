@@ -9,7 +9,7 @@ import java.util.List;
 @Setter
 @Getter
 public class CartRequest {
-    private Long id;
+   private Long id;
     private List<ProductInCart> shoppingList = new ArrayList();
     private boolean payed;
 

@@ -17,4 +17,6 @@ public class Cart {
     private List<ProductInCart> shoppingList = new ArrayList<>();
     private boolean payed;
 
+
+
 }

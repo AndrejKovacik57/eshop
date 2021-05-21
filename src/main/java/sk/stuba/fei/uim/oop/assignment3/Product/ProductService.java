@@ -77,7 +77,7 @@ public class ProductService implements IProductService{
     }
 
     @Override
-    public void increaseProductAmountById(Long id, Integer amount) {
+    public void changeProductAmountById(Long id, Integer amount) {
 
         if(this.repository.findById(id).isPresent()){
 

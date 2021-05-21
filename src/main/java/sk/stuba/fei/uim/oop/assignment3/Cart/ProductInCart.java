@@ -15,8 +15,10 @@ import javax.persistence.Id;
 public class ProductInCart {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long productId;
 
     private Integer amount;
+
+
 
 }

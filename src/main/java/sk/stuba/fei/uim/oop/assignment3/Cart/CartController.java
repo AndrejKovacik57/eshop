@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @RequestMapping("/cart")
 public class CartController {
@@ -24,5 +25,14 @@ public class CartController {
     @DeleteMapping("/{id}")
     void deleteCartById(@PathVariable("id") Long id){
         this.service.deleteCartById(id);
+    }
+
+    @PostMapping("/{id}/add")
+    public CartResponse addProductToCart(@PathVariable("id") Long id, @RequestBody ProductInCart request){
+        return new CartResponse(this.service.addProductToCart(id,request));
+    }
+    @GetMapping ("/{id}/pay")
+    public String  payForCart(@PathVariable("id") Long id){
+        return this.service.payForCart(id);
     }
 }

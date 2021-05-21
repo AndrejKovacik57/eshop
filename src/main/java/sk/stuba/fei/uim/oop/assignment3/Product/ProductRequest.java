@@ -5,12 +5,15 @@ import lombok.Setter;
 
 @Setter
 @Getter
+
 public class ProductRequest {
+    private Long id;
     private String name;
     private String description;
     private Integer amount;
     private String unit;
     private Double price;
+
 
 
 }
