@@ -47,7 +47,6 @@ public class ProductService implements IProductService{
 
     @Override
     public Product updateProductById(Long id, String name, String description) {
-
         if(this.repository.findById(id).isPresent()){
             if(name!=null){
                 this.repository.findById(id).get().setName(name);
